@@ -1,4 +1,3 @@
-
   describe("BASIC LOGIN", { taskTimeout: 60000},() => {
       it("LOGIN AND SEARCH FOR A QUERY UISNG DEFAULT COLLECTION", () => {
         //cy.visit(Cypress.env('test_app_url'))
@@ -14,31 +13,53 @@
                 cy.visit(Cypress.env('test_app_url'))
             })
             }).then(()=>{
-              //cy.visit(Cypress.env('test_app_url'))
+
+              //Home Logo is visible
               cy.get('.MuiBox-root > img').should('be.visible');
 
+               
               cy.get('.MuiBox-root.css-0 img').should("be.visible")
+              //Logged in user name should be visible
               cy.contains(Cypress.env('login_name')).should("be.visible");
+
+              //Type your search querry 'jury duty' 
               cy.get('.css-6gk8hf > .MuiOutlinedInput-root > .MuiOutlinedInput-input').type('jury duty')
               cy.wait(6000)
+
+              //Click on Search Button and wait for the results to get populated
               cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click()
               cy.wait(12000)
+
+              //Scroll down to see the search results including PDFs generated
               cy.get('.css-1peuo0q').scrollIntoView({ easing: 'linear' })
+
+              //Click on the first PDF and check if its get downloaded and wait
               cy.get(':nth-child(1) > .css-12invgp > .MuiTypography-subtitle1 > .MuiTypography-root').click()
               cy.wait(5000)
+
+              //Scroll above to the home page
               cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').scrollIntoView({ easing: 'linear' })
-              //cy.get('.MuiSelect-select > .MuiBox-root > .MuiTypography-body1 ul li').first().click()
+
+              //Select a different Test Collection and type with another search query and wait
               cy.get('.MuiSelect-select > .MuiBox-root > .MuiTypography-body1').click()
               cy.get('[data-value="64c7eef345e03f767850c210"] > .MuiBox-root > .MuiTypography-body1').click()
               cy.get('.css-6gk8hf > .MuiOutlinedInput-root > .MuiOutlinedInput-input').clear().type('jury duty')
               cy.wait(6000)
               cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click()
               cy.wait(12000)
+
+              //Go to the home page and wait 
               cy.get('.MuiBox-root > img').click()
               cy.wait(3000)
-              //cy.get('.css-6gk8hf > .MuiOutlinedInput-root > .MuiOutlinedInput-input').clear()
-              cy.get(':nth-child(2) > .MuiListItemText-root > .MuiTypography-root').click()
-              //cy.get('[data-value="64c7eef345e03f767850c210"] > .MuiBox-root > .MuiTypography-body1').click()
+
+              //Select the default collecyion 
+              cy.get('.MuiBox-root > .MuiTypography-body1').click()
+              cy.get('[data-value="64b6640169c47f0340b59cd7"] > .MuiBox-root > .MuiTypography-body1').click()
+
+              //and then choose the first default search querry
+              cy.get(':nth-child(2) > .MuiListItemText-root > .MuiTypography-root').click() 
+              //Scroll above to the home page
+              cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').scrollIntoView({ easing: 'linear' })             
             })
         })
         
