@@ -62,7 +62,7 @@ const { setDebuggingPortMyService, aadLogin } = require('./cypress/addLogin');
 
 The URL which we have used is  
 
-https://login.microsoftonline.com/ca2ba8c3-b4b1-4aad-9251-d2dca59fd212/oauth2/v2.0/authorize?client_id=862ff324-c86a-4a2b-9bd7-30054e8c7ee2&redirect_uri=https%3A%2F%2Fyellow-bay-090f6720f.3.azurestaticapps.net&response_type=code&scope=openid+profile+api%3A%2F%2Ftest.ask.api.speciphic.ai%2FApp.AllAccess&state=40fd451923f94ed894025a2c395f129b&code_challenge=d6144cI8ngGG-uw6q-BIErWYMbLaMuEy6W1Q5oZTquk&code_challenge_method=S256&response_mode=query&prompt=none 
+https://yellow-bay-090f6720f.3.azurestaticapps.net
 
  
 
